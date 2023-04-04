@@ -1,7 +1,17 @@
 import BookModel from '../models/BooksModel.js'
 import mongoose from 'mongoose';
 
-//Get a specific Book
+//Get all books
+export const allBooks = async (req, res) => {
+    try {
+        const books = await BookModel.find();
+        res.status(200).json(books);
+      } catch (error) {
+        res.status(500).json(error);
+      }
+};
+
+//Get a specific Book by id
 export const getBook = async (req, res) => {
     const id = req.params.id;
 
@@ -14,7 +24,7 @@ export const getBook = async (req, res) => {
 };
 
 //Get Books by Title
-export const getBooks = async (req, res) => {
+export const searchBooks = async (req, res) => {
     const title = req.query.title || '';
 
     try {
@@ -23,6 +33,18 @@ export const getBooks = async (req, res) => {
     } catch (error) {
         res.status(500).json(error);
     }
+};
+
+//Get Books by Category
+export const getCategory = async (req, res) => {
+    const { category } = req.params;
+
+    try {
+        const books = await BookModel.find({ category: category });
+        res.status(200).json(books);
+      } catch (error) {
+        res.status(500).json(error);
+      }
 };
 
 //Create a new Book
