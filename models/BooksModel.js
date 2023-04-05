@@ -7,24 +7,33 @@ const bookSchema = mongoose.Schema({
     },
     cover: {
       type: String,
+      required: true,
     },
     description: {
       type: String,
+      required: true,
     },
     authorId: {
       type: String,
+      required: true,
     },
     rating: {
       type: Number,
+      required: true,
     },
     pages: {
       type: Number,
+      required: true,
     },
-    status: {
+    type: {
       type: String,
+      required: true,
     },
     genre: {
       type: String,
+      index: true,
+      required: true,
+      enum: ['Horror', 'Mystery', 'Comedy', 'Fantasy'],
     },
   }, { timestamps: true });
   

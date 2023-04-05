@@ -37,14 +37,26 @@ export const searchBooks = async (req, res) => {
 
 //Get Books by Category
 export const getCategory = async (req, res) => {
-    const { category } = req.params;
+    const genre = req.params.genre;
 
     try {
-        const books = await BookModel.find({ category: category });
-        res.status(200).json(books);
-      } catch (error) {
-        res.status(500).json(error);
-      }
+    const books = await BookModel.find({ genre }).limit(10);
+    res.status(200).json(books);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+//Get Books by Type
+export const getType = async (req, res) => {
+    const type = req.params.type;
+
+    try {
+    const books = await BookModel.find({ type });
+    res.status(200).json(books);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 };
 
 //Create a new Book
