@@ -1,4 +1,4 @@
-import AuthorModel from '../models/BooksModel.js'
+import AuthorModel from '../models/AuthorsModel.js'
 import mongoose from 'mongoose';
 
 

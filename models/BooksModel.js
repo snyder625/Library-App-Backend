@@ -13,6 +13,10 @@ const bookSchema = mongoose.Schema({
       type: String,
       required: true,
     },
+    author: {
+      type: String,
+      required: true,
+    },
     authorId: {
       type: String,
       required: true,

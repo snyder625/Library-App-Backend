@@ -7,7 +7,6 @@ const authorSchema = mongoose.Schema({
     },
     image: 'string',
     description: 'string',
-    books: [],
 }, { timestamps: true }
 );
 
